@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test-toggle-footer-component">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../component/toggle-footer-style.min.css" type="text/css" rel="stylesheet">
+    <link href="./style.css" type="text/css" rel="stylesheet">
+</head>
+<body ng-controller="commonCtrl as $ctrl">
+<h2>{{$ctrl.title}}</h2>
+<input type="button" value="Close" ng-click="$ctrl.close()"/>
+<input type="button" value="Open" ng-click="$ctrl.open()"/>
+<input type="button" value="GetState| footer isClose: {{$ctrl.log2}}" ng-click="$ctrl.getState()"/>
+<div>
+<pre>
+  {{$ctrl.log | json}}
+</pre>
+</div>
+<toggle-footer title="Footer Title ...">Footer content</toggle-footer>
+</body>
+<script src="../node_modules/angular/angular.min.js"></script>
+<script src="../component/toggleFooterComponent.min.js"></script>
+<script src="./app.js"></script>
+</html>

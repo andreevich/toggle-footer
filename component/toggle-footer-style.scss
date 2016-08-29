@@ -1,0 +1,91 @@
+// mixins
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+@mixin transform($value) {
+  -webkit-transform: $value;
+  -ms-transform: $value;
+  transform: $value;
+}
+
+//constants
+$speed-transition: .5s;
+$c-background: black;
+$c-active: white;
+
+.toggle-footer-component {
+  width: 100%;
+  @include transition(all $speed-transition ease-in-out);
+
+  background: $c-background;
+  bottom: 0;
+  color:$c-active;
+  position: fixed;
+  z-index: 2;
+}
+
+.toggle-footer-component-tab {
+  background: $c-background;
+  border-radius: 3px 3px 0 0;
+  cursor: pointer;
+  height: 30px;
+  left: 10px;
+  padding: 0 10px;
+  position: absolute;
+  top: -30px;
+  width: 190px;
+
+  svg {
+    height: 10px;
+    width: 10px;
+  }
+
+  .tab-title,
+  .tab-close {
+    position: absolute;
+  }
+
+  .tab-title {
+    font-size: 15px;
+    top: 8px;
+  }
+
+  .tab-close {
+    right: 10px;
+    top: 15px;
+  }
+}
+
+.tab-close {
+  @include transform(rotateX(0deg));
+
+  svg {
+    height: 14px;
+    width: 14px;
+    cursor: pointer;
+    fill: $c-active;
+    position: absolute;
+    right: -1px;
+    top: -7px;
+  }
+}
+
+.toggle-footer-component-container {
+  align-items: center;
+  height: 100%;
+  min-height: 117px;
+  padding-left: 22px;
+  padding-top: 20px;
+  color: $c-active;
+}
+
+.toggle-footer-component-hide {
+  @include transform(translateY(100%));
+  .tab-close {
+    @include transform(rotateX(180deg));
+  }
+}
